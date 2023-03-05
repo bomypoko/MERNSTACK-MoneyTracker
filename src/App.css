@@ -1,0 +1,33 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #17181f;
+  color: #ddd
+}
+
+
+main {
+  max-width: 360px;
+  margin: 30px auto;
+}
+
+h1 {
+  text-align: center;
+  color: #fff;
+  margin: 0;
+}
+
+form {
+  margin-top: 20px;
+
+}
+
+form input {
+  width: 100%;
+}
+
+form div.basic {
+  display: flex
+}
