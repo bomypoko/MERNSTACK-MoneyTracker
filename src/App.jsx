@@ -18,14 +18,40 @@ const App = () => {
       </form>
 
       <div className="transactions">
+
         <div className="transaction">
+          
           <div className="left">
             <div className="name">New Sony Tv</div>
             <div className="description">It was for new Tv </div>
           </div>
 
           <div className="right">
-            <div className="price">$500</div>
+            <div className="price red">-$500</div>
+            <div className="datetime">2022-12-05 15:24</div>
+          </div>
+        </div>
+        <div className="transaction">
+
+          <div className="left">
+            <div className="name">Computer PC</div>
+            <div className="description">It was for new Tv </div>
+          </div>
+
+          <div className="right">
+            <div className="price green">$400</div>
+            <div className="datetime">2022-12-05 15:24</div>
+          </div>
+        </div>
+        <div className="transaction">
+
+          <div className="left">
+            <div className="name">Iphone</div>
+            <div className="description">It was for new Tv </div>
+          </div>
+
+          <div className="right">
+            <div className="price red">-$1300</div>
             <div className="datetime">2022-12-05 15:24</div>
           </div>
         </div>
