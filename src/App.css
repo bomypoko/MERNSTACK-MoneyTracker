@@ -25,6 +25,7 @@ form {
 }
 form input {
   width: 100%;
+  padding: 5px;
 }
 form div.basic {
   display: flex;
@@ -45,13 +46,21 @@ form button {
 
 /* Start Transactions Container */
 div.transactions {
-  margin-top: 5px;
+  margin-top: 15px;
 }
 div.transaction {
   display: flex;
   padding: 5px 0;
   justify-content: space-between;
+  border-top: 1px solid #30313d
 }
+div.transaction:first-child{
+  border-top: none;
+}
+
+
+
+
 
 /* End Transactions Container  */
 
@@ -79,3 +88,8 @@ div.price.green {
 div.price.red {
   color:#c11
 }
+div.transaction div.datetime{
+  font-size: 0.7rem;
+  color: #888;
+}
+
