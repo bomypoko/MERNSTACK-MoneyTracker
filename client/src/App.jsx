@@ -6,7 +6,10 @@ const App = () => {
   const [datetime, setDatetime] = useState("")
   const [description, setDescription] = useState("")
 
-  const handleSubmit = () => {
+  const handleSubmit = e => {
+    e.preventDefault()
+    const url = import.meta.env.VITE_REACT_APP_API_URL
+    console.log(url)
   }
 
   return (
