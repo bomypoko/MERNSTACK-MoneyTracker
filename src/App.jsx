@@ -1,26 +1,46 @@
-import React from "react"
-import './App.css'
+import React, { useState } from "react"
+import "./App.css"
 
 const App = () => {
+  const [name, setName] = useState("")
+  const [datetime, setDatetime] = useState("")
+  const [description, setDescription] = useState("")
+
+  const handleSubmit = () => {
+  }
+
   return (
     <main>
       <h1> $400</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="basic">
-          <input type="text" placeholder="+200 TV Sony" />
-          <input type="datetime-local" />
+          <input
+            type="text"
+            value={name}
+            onChange={e => setName(e.target.value)}
+            placeholder="+200 TV Sony"
+          />
+
+          <input
+            type="datetime-local"
+            value={datetime}
+            onChange={e => setDatetime(e.target.value)}
+          />
         </div>
 
         <div className="description">
-          <input type="text" placeholder="Description" />
+          <input
+            type="text"
+            value={description}
+            onChange={e => setDescription(e.target.value)}
+            placeholder="Description"
+          />
         </div>
         <button type="submit"> Add New Transaction </button>
       </form>
 
       <div className="transactions">
-
         <div className="transaction">
-          
           <div className="left">
             <div className="name">New Sony Tv</div>
             <div className="description">It was for new Tv </div>
@@ -32,7 +52,6 @@ const App = () => {
           </div>
         </div>
         <div className="transaction">
-
           <div className="left">
             <div className="name">Computer PC</div>
             <div className="description">It was for new Tv </div>
@@ -44,7 +63,6 @@ const App = () => {
           </div>
         </div>
         <div className="transaction">
-
           <div className="left">
             <div className="name">Iphone</div>
             <div className="description">It was for new Tv </div>

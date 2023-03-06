@@ -52,11 +52,13 @@ div.transaction {
   display: flex;
   padding: 5px 0;
   justify-content: space-between;
-  border-top: 1px solid #30313d
+  border-bottom: 1px solid #30313d
+  
+  /* if border-top need to add below class */
 }
-div.transaction:first-child{
+/* div.transaction:first-child{
   border-top: none;
-}
+} */
 
 
 
