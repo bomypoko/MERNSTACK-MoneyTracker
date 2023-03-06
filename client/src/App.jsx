@@ -8,8 +8,16 @@ const App = () => {
 
   const handleSubmit = e => {
     e.preventDefault()
-    const url = import.meta.env.VITE_REACT_APP_API_URL
-    console.log(url)
+    const url = import.meta.env.VITE_REACT_APP_API_URL + "/transaction"
+    fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, description, datetime }),
+    }).then(response => {
+      response.json().then(json => {
+        console.log("result", json)
+      })
+    })
   }
 
   return (
