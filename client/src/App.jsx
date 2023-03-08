@@ -1,10 +1,29 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import "./App.css"
+import axios from 'axios'
 
 const App = () => {
   const [name, setName] = useState("")
   const [datetime, setDatetime] = useState("")
   const [description, setDescription] = useState("")
+  const [price, setPrice] = useState("")
+  const [data , setData ] = useState('')
+
+
+  // useEffect( () => ({
+  //   const getData = async() => {
+  //     const results = await axios.get('http://localhost:4040/client/transactions')
+      
+    
+  // },[])
+
+  // useEffect(() => {
+  //   const getData = async() => {
+  //     const results = await axios.get('http://localhost:4040/client/transactions')
+  //     console.log(results)
+  //   }
+
+  // },[])
 
   const handleSubmit = e => {
     e.preventDefault()
@@ -16,12 +35,14 @@ const App = () => {
         name,
         description,
         datetime,
+        price,
       }),
     }).then(response => {
       response.json().then(json => {
         setName("")
         setDatetime("")
         setDescription("")
+        setPrice("")
 
         console.log("result", json)
       })
@@ -37,7 +58,7 @@ const App = () => {
             type="text"
             value={name}
             onChange={e => setName(e.target.value)}
-            placeholder="+200 TV Sony"
+            placeholder="Item"
           />
 
           <input
@@ -54,7 +75,15 @@ const App = () => {
             onChange={e => setDescription(e.target.value)}
             placeholder="Description"
           />
+
+          <input
+            type="number"
+            value={price}
+            onChange={e => setPrice(e.target.value)}
+            placeholder="Amount"
+          />
         </div>
+
         <button type="submit"> Add New Transaction </button>
       </form>
 
@@ -70,7 +99,8 @@ const App = () => {
             <div className="datetime">2022-12-05 15:24</div>
           </div>
         </div>
-        <div className="transaction">
+
+        {/* <div className="transaction">
           <div className="left">
             <div className="name">Computer PC</div>
             <div className="description">It was for new Tv </div>
@@ -91,7 +121,7 @@ const App = () => {
             <div className="price red">-$1300</div>
             <div className="datetime">2022-12-05 15:24</div>
           </div>
-        </div>
+        </div> */}
       </div>
     </main>
   )

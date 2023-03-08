@@ -18,16 +18,23 @@ app.get("/", (req, res) => {
 app.post("/client/transaction", async (req, res) => {
   await mongoose.connect(process.env.MONGO_URL)
   // Received Request from the Client side )
-  const { name, description, datetime } = req.body
+  const { name, description, datetime, price } = req.body
   // After got info , now we will put in the mongodb (Document)
   const transaction = await Transaction.create({
     name,
     description,
     datetime,
-  });
+    price,
+  })
   // ^ result inside Database     ^ This is model , Schema
   // res.json(req.body)
   res.json(transaction)
+})
+
+app.get("/client/transactions", async (req, res) => {
+  await mongoose.connect(process.env.MONGO_URL)
+  const transactions = await Transaction.find()
+  res.json(transactions)
 })
 
 app.listen(PORT, () => console.log(`server is running on port ${PORT}`))
