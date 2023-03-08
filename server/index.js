@@ -20,13 +20,14 @@ app.post("/client/transaction", async (req, res) => {
   // Received Request from the Client side )
   const { name, description, datetime } = req.body
   // After got info , now we will put in the mongodb (Document)
-  const transaction = await Transaction.create({name,description,datetime});
-// ^ result inside Database     ^ This is model , Schema
+  const transaction = await Transaction.create({
+    name,
+    description,
+    datetime,
+  });
+  // ^ result inside Database     ^ This is model , Schema
   // res.json(req.body)
   res.json(transaction)
-
 })
 
 app.listen(PORT, () => console.log(`server is running on port ${PORT}`))
-
-// J7VXLMOP72ixttkj
