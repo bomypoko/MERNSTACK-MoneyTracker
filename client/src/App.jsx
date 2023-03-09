@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react"
 import "./App.css"
 import axios from 'axios'
 
+const url = import.meta.VITE_REACT_APP_API_URL + '/transaction'
+
 const App = () => {
   const [name, setName] = useState("")
   const [datetime, setDatetime] = useState("")
@@ -10,20 +12,25 @@ const App = () => {
   const [data , setData ] = useState('')
 
 
-  // useEffect( () => ({
-  //   const getData = async() => {
-  //     const results = await axios.get('http://localhost:4040/client/transactions')
-      
+useEffect(() => {
+
+  const fetchData = async() => {
     
-  // },[])
+    const result = await axios('http://localhost:4040/client/transactions')
+    .then(result => setData(result.data))
+  }
 
-  // useEffect(() => {
-  //   const getData = async() => {
-  //     const results = await axios.get('http://localhost:4040/client/transactions')
-  //     console.log(results)
-  //   }
 
-  // },[])
+  fetchData()
+
+
+
+},[])
+
+
+console.log(data)
+  
+
 
   const handleSubmit = e => {
     e.preventDefault()
