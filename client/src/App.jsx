@@ -1,35 +1,52 @@
 import React, { useState, useEffect } from "react"
 import "./App.css"
-import axios from 'axios'
+import axios from "axios"
 
-const url = import.meta.VITE_REACT_APP_API_URL + '/transaction'
+
 
 const App = () => {
   const [name, setName] = useState("")
   const [datetime, setDatetime] = useState("")
   const [description, setDescription] = useState("")
   const [price, setPrice] = useState("")
-  const [data , setData ] = useState('')
+  const [data, setData] = useState("")
 
 
-useEffect(() => {
+  // get data with axios 
 
-  const fetchData = async() => {
+  useEffect(() => {
+
+    const url = import.meta.env.VITE_REACT_APP_API_URL + "/transactions"
+    const fetchData = async () => {
+      
+      const result = await axios.get(url)
+      .then(result => setData(result.data))
+    }
+
+    fetchData()
     
-    const result = await axios('http://localhost:4040/client/transactions')
-    .then(result => setData(result.data))
-  }
+  }, [])
 
+  console.log(data)
 
-  fetchData()
+// ******----------------------------------------********
 
+  // Get Data with Fetch
 
+  // useEffect(() => {
+  //   getTransaction().then(transactions => {
+  //     setData(transactions)
+  //   });
+  // },[])
 
-},[])
+  // const getTransaction = async() => {
+  //   const url = import.meta.env.VITE_REACT_APP_API_URL + "/transactions"
+  //   const response = await fetch(url)
+  //   return await response.json()
+  // }
 
-
-console.log(data)
   
+
 
 
   const handleSubmit = e => {
@@ -93,6 +110,8 @@ console.log(data)
 
         <button type="submit"> Add New Transaction </button>
       </form>
+
+      {/* {data.length} */}
 
       <div className="transactions">
         <div className="transaction">
