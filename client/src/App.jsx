@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react"
 import "./App.css"
 import axios from "axios"
 
-
-
 const App = () => {
   const [name, setName] = useState("")
   const [datetime, setDatetime] = useState("")
@@ -11,43 +9,34 @@ const App = () => {
   const [price, setPrice] = useState("")
   const [data, setData] = useState("")
 
+  // get data with axios
 
-  // get data with axios 
+  // useEffect(() => {
+  //   const url = import.meta.env.VITE_REACT_APP_API_URL + "/transactions"
+  //   const fetchData = async () => {
+  //     const result = await axios.get(url).then(result => setData(result.data))
+  //   }
 
-  useEffect(() => {
+  //   fetchData()
+  // }, [])
 
-    const url = import.meta.env.VITE_REACT_APP_API_URL + "/transactions"
-    const fetchData = async () => {
-      
-      const result = await axios.get(url)
-      .then(result => setData(result.data))
-    }
+  // console.log(data)
 
-    fetchData()
-    
-  }, [])
-
-  console.log(data)
-
-// ******----------------------------------------********
+  // ******----------------------------------------********
 
   // Get Data with Fetch
 
-  // useEffect(() => {
-  //   getTransaction().then(transactions => {
-  //     setData(transactions)
-  //   });
-  // },[])
+  useEffect(() => {
+    getTransaction().then(transactions => {
+      setData(transactions)
+    })
+  }, [])
 
-  // const getTransaction = async() => {
-  //   const url = import.meta.env.VITE_REACT_APP_API_URL + "/transactions"
-  //   const response = await fetch(url)
-  //   return await response.json()
-  // }
-
-  
-
-
+  const getTransaction = async () => {
+    const url = import.meta.env.VITE_REACT_APP_API_URL + "/transactions"
+    const response = await fetch(url)
+    return await response.json()
+  }
 
   const handleSubmit = e => {
     e.preventDefault()
@@ -111,12 +100,32 @@ const App = () => {
         <button type="submit"> Add New Transaction </button>
       </form>
 
-      {/* {data.length} */}
+      {data.map(item => (
+
+        <div className="transactions"> 
+
+          <div className="transaction">
+
+            <div className="left">
+              <div className="name" key={item.id}>
+                {item.name}
+              </div>
+              <div className="description">{item.description}</div>
+            </div>
+
+            <div className="right">
+            <div className="price red">{item.price}</div>
+            <div className="datetime">{item.datetime}</div>
+          </div>
+
+          </div>
+        </div>
+      ))}
 
       <div className="transactions">
-        <div className="transaction">
+        {/* <div className="transaction">
           <div className="left">
-            <div className="name">New Sony Tv</div>
+            <div className="name">Sony</div>
             <div className="description">It was for new Tv </div>
           </div>
 
@@ -124,7 +133,7 @@ const App = () => {
             <div className="price red">-$500</div>
             <div className="datetime">2022-12-05 15:24</div>
           </div>
-        </div>
+        </div> */}
 
         {/* <div className="transaction">
           <div className="left">
@@ -136,8 +145,9 @@ const App = () => {
             <div className="price green">$400</div>
             <div className="datetime">2022-12-05 15:24</div>
           </div>
-        </div>
-        <div className="transaction">
+        </div> */}
+
+        {/* <div className="transaction">
           <div className="left">
             <div className="name">Iphone</div>
             <div className="description">It was for new Tv </div>

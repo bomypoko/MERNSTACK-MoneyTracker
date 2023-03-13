@@ -26,8 +26,7 @@ app.post("/client/transaction", async (req, res) => {
     datetime,
     price,
   })
-  // ^ result inside Database     ^ This is model , Schema
-  // res.json(req.body)
+
   res.json(transaction)
 })
 
